@@ -22,6 +22,18 @@ return array(
                     ),
                 ),
             ),
+            
+            'list' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/list/:type',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'list',
+                    ),
+                ),
+            ),
+            
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -73,11 +85,14 @@ return array(
             ),
         ),
     ),
+    
+    // Controller config.
     'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' => Controller\IndexController::class
+        'factories' => array(
+            'Application\Controller\Index' => 'Application\Controller\IndexControllerFactory'
         ),
     ),
+    
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
