@@ -32,13 +32,41 @@
                         'action' => 'index',
                         'type' => 'penny'
                         ));?>">Penny</a></li>
-                    <li><a href="#">Threepence</a></li>
-                    <li><a href="#">Groat</a></li>
-                    <li><a href="#">Sixpence</a></li>
-                    <li><a href="#">Shilling</a></li>
-                    <li><a href="#">Florin</a></li>
-                    <li><a href="#">Half Crown<a></li>
-                    <li><a href="#">Crown</a></li>
+                    <li><a href="<?php echo $this->url('application/default', array(
+                        'controller' => 'coin',
+                        'action' => 'index',
+                        'type' => 'threepence'
+                        ));?>">Threepence</a></li>
+                    <li><a href="<?php echo $this->url('application/default', array(
+                        'controller' => 'coin',
+                        'action' => 'index',
+                        'type' => 'groat'
+                        ));?>">Groat</a></li>
+                    <li><a href="<?php echo $this->url('application/default', array(
+                        'controller' => 'coin',
+                        'action' => 'index',
+                        'type' => 'sixpence'
+                        ));?>">Sixpence</a></li>
+                    <li><a href="<?php echo $this->url('application/default', array(
+                        'controller' => 'coin',
+                        'action' => 'index',
+                        'type' => 'shilling'
+                        ));?>">Shilling</a></li>
+                    <li><a href="<?php echo $this->url('application/default', array(
+                        'controller' => 'coin',
+                        'action' => 'index',
+                        'type' => 'florin'
+                        ));?>">Florin</a></li>
+                    <li><a href="<?php echo $this->url('application/default', array(
+                        'controller' => 'coin',
+                        'action' => 'index',
+                        'type' => 'half-crown'
+                        ));?>">Half Crown</a></li>
+                    <li><a href="<?php echo $this->url('application/default', array(
+                        'controller' => 'coin',
+                        'action' => 'index',
+                        'type' => 'crown'
+                        ));?>">Crown</a></li>
                 </ul>            
             </div>
         </div>
