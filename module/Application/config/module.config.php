@@ -12,27 +12,6 @@ namespace Application;
 return array(
     'router' => array(
         'routes' => array(
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
-            
-            'list' => array(
-                'type' => 'Segment',
-                'options' => array(
-                    'route'    => '/list/:type',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
-                        'action'     => 'list',
-                    ),
-                ),
-            ),
             
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
@@ -41,7 +20,7 @@ return array(
             'application' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/application',
+                    'route'    => '/',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller'    => 'Index',
@@ -53,7 +32,7 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action]]',
+                            'route'    => '[:controller[/:action[/:type]]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -88,8 +67,11 @@ return array(
     
     // Controller config.
     'controllers' => array(
+        'invokables' => array(
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+        ),
         'factories' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexControllerFactory'
+            'Application\Controller\Coin'  => 'Application\Controller\CoinControllerFactory'
         ),
     ),
     

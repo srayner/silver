@@ -6,12 +6,11 @@ use Application\Service\Coin as CoinService;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class IndexControllerFactory implements FactoryInterface
+class CoinControllerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $service = new CoinService;
-        return new IndexController($service);
+        return new CoinController($service);
     }
 }
-

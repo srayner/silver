@@ -12,10 +12,26 @@
             </div>
             <div class="panel-body">
                 <ul>
-                    <li><a href="#">Half Farthing</a></li>
-                    <li><a href="#">Farthing</a></li>
-                    <li><a href="#">Half Penny</a></li>
-                    <li><a href="#">Penny</a></li>
+                    <li><a href="<?php echo $this->url('application/default', array(
+                        'controller' => 'coin',
+                        'action' => 'index',
+                        'type' => 'half-farthing'
+                        ));?>">Half Farthing</a></li>
+                    <li><a href="<?php echo $this->url('application/default', array(
+                        'controller' => 'coin',
+                        'action' => 'index',
+                        'type' => 'farthing'
+                        ));?>">Farthing</a></li>
+                    <li><a href="<?php echo $this->url('application/default', array(
+                        'controller' => 'coin',
+                        'action' => 'index',
+                        'type' => 'half-penny'
+                        ));?>">Half Penny</li>
+                    <li><a href="<?php echo $this->url('application/default', array(
+                        'controller' => 'coin',
+                        'action' => 'index',
+                        'type' => 'penny'
+                        ));?>">Penny</a></li>
                     <li><a href="#">Threepence</a></li>
                     <li><a href="#">Groat</a></li>
                     <li><a href="#">Sixpence</a></li>
