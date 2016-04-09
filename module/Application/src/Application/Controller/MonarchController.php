@@ -18,7 +18,7 @@ class MonarchController extends AbstractActionController
     public function indexAction()
     {
         return array(
-            'monarchs' => $this->service->getAll()
+            'monarchs' => $this->service->findAll()
         );
     }
    

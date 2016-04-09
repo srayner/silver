@@ -2,8 +2,9 @@
 
 namespace Application\Entity;
 
-class Coin extends AbstractEntity
+class Coin
 {
+    protected $id;
     protected $type;
     protected $year;
     protected $mintage;

@@ -11,10 +11,10 @@
     <tbody>
     <?php foreach($this->monarchs as $monarch):?>
         <tr>
-            <td><?php echo $monarch; ?></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><?php echo $monarch->getName(); ?></td>
+            <td><?php echo $monarch->getHouse(); ?></td>
+            <td><?php echo date_format($monarch->getReignStart(), 'd/m/Y'); ?></td>
+            <td><?php echo $monarch->getReignEnd(); ?></td>
         </tr>
     <?php endforeach; ?>
     </tbody>

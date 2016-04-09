@@ -2,8 +2,9 @@
 
 namespace Application\Entity;
 
-class Type extends AbstractEntity
+class Type
 {
+    protected $id;
     protected $monarch;
     protected $denomination;
     protected $metal;

@@ -2,13 +2,48 @@
 
 namespace Application\Entity;
 
-class Monarch extends AbstractEntity
+use Doctrine\ORM\Mapping as ORM;
+
+/** @ORM\Entity
+  * @ORM\Table(name="monarch")
+  */
+class Monarch
 {
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
     protected $name;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
     protected $house;
+    
+    /**
+     * @ORM\Column(type="date")
+     */
     protected $birth;
+    
+    /**
+     * @ORM\Column(type="date", name="reign_start")
+     */
     protected $reignStart;
+    
+    /**
+     * @ORM\Column(type="date", name="reign_end")
+     */
     protected $reignEnd;
+    
+    /**
+     * @ORM\Column(type="date")
+     */
     protected $death;
     
     function getName()

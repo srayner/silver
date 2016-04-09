@@ -4,13 +4,16 @@ namespace Application\Service;
 
 class MonarchService
 {
-    public function getAll()
+    const REPO = 'Application\Entity\Monarch';
+    protected $entityManager;
+    
+    public function __construct($entityManager)
     {
-        return array(
-            'George III',
-            'George IV',
-            'Victoria'
-        );
-        
+        $this->entityManager = $entityManager;
+    }
+    
+    public function findAll()
+    {
+        return $this->entityManager->getRepository($this::REPO)->findAll();
     }
 }

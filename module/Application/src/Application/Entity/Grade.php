@@ -2,8 +2,10 @@
 
 namespace Application\Entity;
 
-class Condition extends AbstractEntity
+class Condition
 {
+    protected $id;
+    
     protected $description;
     
     function getDescription()

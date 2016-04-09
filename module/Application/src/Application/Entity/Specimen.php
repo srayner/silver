@@ -2,8 +2,9 @@
 
 namespace Application\Entity;
 
-class Specimen extends AbstractEntity
+class Specimen
 {
+    protected $id;
     protected $coin;
     protected $condition;
     protected $dateObtained;
