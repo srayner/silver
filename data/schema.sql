@@ -23,7 +23,6 @@ CREATE TABLE type (
     PRIMARY KEY (id),
     FOREIGN KEY (monarch_id) REFERENCES monarch(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
-ALTER TABLE type
 
 -- Coin Table
 CREATE TABLE coin (
@@ -36,11 +35,11 @@ CREATE TABLE coin (
     reverse_design   Varchar(128),
     reverse_designer Varchar(64),
     PRIMARY KEY (id),
-    FORIEGN KEY (type_id) REFERENCES type(id) ON DELETE CASCADE
+    FOREIGN KEY (type_id) REFERENCES type(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- Condition table
-CREATE TABLE condition (
+-- Grade table
+CREATE TABLE grade (
     id           Integer NOT NULL AUTO_INCREMENT, 
     description  Varchar(32),
   PRIMARY KEY (
@@ -52,7 +51,7 @@ CREATE TABLE condition (
 CREATE TABLE specimen (
   id             Integer NOT NULL AUTO_INCREMENT,
   coin_id        Integer,
-  condition_id   Integer,
+  grade_id       Integer,
   date_obtained  Date,
   obtained_from  Varchar(128),
   purchase_price Decimal(8,2),
@@ -61,6 +60,6 @@ CREATE TABLE specimen (
   row_no         Integer,
   column_no      Integer),
   PRIMARY KEY (id),
-  FOREIGN KEY (coin_id)      REFERENCES coin(id) ON DELETE CASCADE,
-  FOREIGN KEY (condition_id) REFERENCES condition(id) ON DELETE CASCADE
+  FOREIGN KEY (coin_id)  REFERENCES coin(id)  ON DELETE CASCADE,
+  FOREIGN KEY (grade_id) REFERENCES grade(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;

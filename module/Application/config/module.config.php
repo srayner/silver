@@ -71,7 +71,8 @@ return array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
         ),
         'factories' => array(
-            'Application\Controller\Coin'  => 'Application\Controller\CoinControllerFactory'
+            'Application\Controller\Coin'    => 'Application\Controller\CoinControllerFactory',
+            'Application\Controller\Monarch' => 'Application\Controller\MonarchControllerFactory'
         ),
     ),
     
