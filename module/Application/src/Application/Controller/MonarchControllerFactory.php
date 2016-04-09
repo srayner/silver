@@ -2,7 +2,6 @@
 
 namespace Application\Controller;
 
-use Application\Service\Monarch as MonarchService;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -10,7 +9,7 @@ class MonarchControllerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $service = new MonarchService;
+        $service = $serviceLocator->getServiceLocator()->get('Application\Service\MonarchService');
         return new MonarchController($service);
     }
 }

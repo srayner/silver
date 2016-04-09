@@ -10,13 +10,10 @@
 namespace Application;
 
 return array(
+    
+    // Router configuration.
     'router' => array(
         'routes' => array(
-            
-            // The following is a route to simplify getting started creating
-            // new controllers and actions without needing to create a new
-            // module. Simply drop new controllers in, and you can access them
-            // using the path /application/:controller/:action
             'application' => array(
                 'type'    => 'Literal',
                 'options' => array(
@@ -45,13 +42,24 @@ return array(
             ),
         ),
     ),
+    
+    // Service manager configuration.
     'service_manager' => array(
+        'invokables' => array(
+            'Application\Monarch'  => 'Application\Entity\Monarch',
+            'Application\Type'     => 'Application\Entity\Type', 
+            'Application\Coin'     => 'Application\Entity\Coin',
+            'Application\Grade'    => 'Application\Entity\Grade',
+            'Application\Specimen' => 'Application\Entity\Specimen',
+            
+        ),
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
+            'Application\Service\MonarchService' => 'Application\Service\MonarchServiceFactory'
         ),
     ),
     'translator' => array(

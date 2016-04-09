@@ -2,7 +2,7 @@
 
 namespace Application\Service;
 
-class Monarch
+class MonarchService
 {
     public function getAll()
     {
