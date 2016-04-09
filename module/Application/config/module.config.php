@@ -59,6 +59,7 @@ return array(
         ),
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
+            'Application\MonarchForm' => 'Application\Form\MonarchFormFactory',
             'Application\Service\MonarchService' => 'Application\Service\MonarchServiceFactory'
         ),
     ),

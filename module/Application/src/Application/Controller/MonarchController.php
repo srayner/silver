@@ -24,7 +24,10 @@ class MonarchController extends AbstractActionController
    
     public function addAction()
     {
-        
+        $form = $this->serviceLocator->get('Application\MonarchForm');
+        return new ViewModel(array(
+           'form' => $form 
+        ));
     }
     
     public function editAction()
