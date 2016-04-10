@@ -10,8 +10,9 @@ class CoinFormFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $form = new CoinForm;
         $entityManager = $serviceLocator->get('Doctrine\ORM\EntityManager');
+        $form = new CoinForm($entityManager);
+        $form->setInputFilter(new CoinFilter());
         $hydrator = new DoctrineHydrator($entityManager);
         $form->setHydrator($hydrator);
         return $form;

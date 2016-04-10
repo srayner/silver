@@ -2,13 +2,14 @@
 
 namespace Application\Form;
 
-class MonarchForm extends HorizontalForm
+class CoinForm extends HorizontalForm
 {
-    public function __construct()
+    public function __construct($em)
     {
         parent::__construct();
         
-        $this->addText('year', 'Year')
+        $this->addDoctrineSelect('type', 'Coin Type', $em, 'Application\Entity\Type', 'denomination')
+             ->addText('year', 'Year')
              ->addText('mintage', 'Mintage')
              ->addText('obverseDesign', 'Obverse Design')
              ->addText('obverseDesigner', 'Obverse Designer')

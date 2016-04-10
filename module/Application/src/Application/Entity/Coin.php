@@ -1,17 +1,60 @@
 <?php
 
 namespace Application\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
+/** @ORM\Entity
+  * @ORM\Table(name="coin")
+  */
 class Coin
 {
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
     protected $id;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Type")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     */
     protected $type;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
     protected $year;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
     protected $mintage;
+    
+    /**
+     * @ORM\Column(type="string", name="obverse_design")
+     */
     protected $obverseDesign;
+    
+    /**
+     * @ORM\Column(type="string", name="obverse_designer")
+     */
     protected $obverseDesigner;
+    
+    /**
+     * @ORM\Column(type="string", name="reverse_design")
+     */
     protected $reverseDesign;
+    
+    /**
+     * @ORM\Column(type="string", name="reverse_designer")
+     */
     protected $reverseDesigner;
+    
+    function getId()
+    {
+        return $this->id;
+    }
     
     function getType()
     {
@@ -48,6 +91,12 @@ class Coin
         return $this->reverseDesigner;
     }
 
+    function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+    
     function setType($type)
     {
         $this->type = $type;

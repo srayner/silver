@@ -1,40 +1,43 @@
-<h1><?php echo $this->type; ?></h1>
-
-
-<h3>Victoria <small>Godless and Gothic</small></h2>
-
-<h3>Victoria <small>Jubilee Head</small></h2>
-
-<h3>Victoria <small>Old, Veiled or Widow Head</small></h2>
-<table class="table table-condensed table-bordered">
-    <tbody>
+<header class="row">
+    <h1 class="col-md-9">Coins</h1>
+    <div class="col-md-3">
+        <a class="pull-right btn btn-sm btn-success" href="<?php echo $this->url('application/default', array(
+            'controller' => 'coin',
+            'action' => 'add'
+        ));?>">Add Coin</a>
+    </div>
+</header>
+    
+<table class="table">
+    <thead>
         <tr>
             <th>Year</th>
             <th>Mintage</th>
-            <th>Condition</th>
-            <th>Est. Value</th>
+            <th>Obverse Design</th>
+            <th>Reverse Design</th>
+            <th>Action</th>
         </tr>
-        <?php foreach ($this->coins as $coin): ?>
-        <tr>
-            <td>1893</td>
-            <td>1,666,103</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
-
-<br><br></br>
-<hr>
-
-<table class="table">
+    </thead>
     <tbody>
-        <?php foreach ($this->coins as $coin): ?>
+    <?php foreach($this->coins as $coin):?>
         <tr>
-            <td><?php echo $coin;?>
+            <td><?php echo $coin->getYear(); ?></td>
+            <td><?php echo $coin->getMintage(); ?></td>
+            <td><?php echo $coin->getObverseDesign(); ?></td>
+            <td><?php echo $coin->getReverseDesign(); ?></td>
+            <td style="width: 1%;" nowrap>
+                <a class="btn btn-sm btn-warning" href="<?php echo $this->url('application/default', array(
+                    'controller' => 'coin',
+                    'action' => 'edit',
+                    'id' => $coin->getId()
+                )); ?>">Edit</a>
+                <a class="btn btn-sm btn-danger" href="<?php echo $this->url('application/default', array(
+                    'controller' => 'coin',
+                    'action' => 'delete',
+                    'id' => $coin->getId()
+                )); ?>">Delete</a>
+            </td>
         </tr>
-        <?php endforeach; ?>
+    <?php endforeach; ?>
     </tbody>
 </table>
-
