@@ -9,7 +9,7 @@ class MonarchControllerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $service = $serviceLocator->getServiceLocator()->get('Application\Service\MonarchService');
+        $service = $serviceLocator->getServiceLocator()->get('Application\Service\Monarch');
         return new MonarchController($service);
     }
 }

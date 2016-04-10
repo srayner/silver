@@ -5,7 +5,7 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class MonarchController extends AbstractActionController
+class SpecimenController extends AbstractActionController
 {
     protected $service;
     
@@ -18,14 +18,14 @@ class MonarchController extends AbstractActionController
     public function indexAction()
     {
         return array(
-            'monarchs' => $this->service->findAll()
+            'specimens' => $this->service->findAll()
         );
     }
    
     public function addAction()
     {
         // Create a new form.
-        $form = $this->getServiceLocator()->get('Application\Form\Monarch');
+        $form = $this->getServiceLocator()->get('Application\Form\Specimen');
          
         // Check if the request is a POST.
         $request = $this->getRequest();
@@ -34,20 +34,19 @@ class MonarchController extends AbstractActionController
             // POST, so check if valid.
             $data = (array) $request->getPost();
           
-            // Create a new monarch object.
-            $monarch = $this->getServiceLocator()->get('Application\Monarch');
+            // Create a new specimen object.
+            $specimen = $this->getServiceLocator()->get('Application\Specimen');
             
-            $form->bind($monarch);
+            $form->bind($specimen);
             $form->setData($data);
             if ($form->isValid())
             {
-          	// Persist computer.
-            	$this->service->persist($monarch);
+          	// Persist specimen.
+            	$this->service->persist($specimen);
                 
-            	// Redirect to list of monarchs
+            	// Redirect to list of specimens
 		return $this->redirect()->toRoute('application/default', array(
-		    'controller' => 'monarch',
-                    'action'     => 'index'
+		    'controller' => 'specimen',
 		));
             }
         } 
@@ -64,16 +63,16 @@ class MonarchController extends AbstractActionController
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
              return $this->redirect()->toRoute('application/default', array(
-                 'controller' => 'monarch',
+                 'controller' => 'specimen',
                  'action' => 'add'
              ));
         }
         
-        // Grab the monarch with the specified id.
-        $monarch = $this->service->findById($id);
+        // Grab the specimen with the specified id.
+        $specimen = $this->service->findById($id);
         
         $form = $this->getServiceLocator()->get('Application\Form\Monarch');
-        $form->bind($monarch);
+        $form->bind($specimen);
         
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -81,18 +80,18 @@ class MonarchController extends AbstractActionController
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 
-                // Persist monarch.
-            	$this->service->persist($monarch);
+                // Persist specimen.
+            	$this->service->persist($specimen);
                 
-                // Redirect to list of monarchs
+                // Redirect to list of specimens
                 return $this->redirect()->toRoute('application/default', array(
-                    'controller' => 'monarch'
+                    'controller' => 'specimen'
                 ));
             }     
         }
         
         return new ViewModel(array(
-             'monarch' => $monarch,
+             'specimen' => $specimen,
              'form' => $form,
         ));
         
@@ -104,4 +103,3 @@ class MonarchController extends AbstractActionController
     }
 
 }
-

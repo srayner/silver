@@ -59,8 +59,15 @@ return array(
         ),
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
-            'Application\MonarchForm' => 'Application\Form\MonarchFormFactory',
-            'Application\Service\MonarchService' => 'Application\Service\MonarchServiceFactory'
+            'Application\Form\Coin'        => 'Application\Form\CoinFormFactory',
+            'Application\Form\Grade'       => 'Application\Form\GradeFormFactory',
+            'Application\Form\Monarch'     => 'Application\Form\MonarchFormFactory',
+            'Application\Form\Specimen'    => 'Application\Form\SpecimenFormFactory',
+            'Application\Service\Coin'     => 'Application\Service\MonarchServiceFactory',
+            'Application\Service\Grade'    => 'Application\Service\MonarchServiceFactory',
+            'Application\Service\Monarch'  => 'Application\Service\MonarchServiceFactory',
+            'Application\Service\Specimen' => 'Application\Service\MonarchServiceFactory',
+            'Application\Service\Type'     => 'Application\Service\MonarchServiceFactory',
         ),
     ),
     'translator' => array(
@@ -80,8 +87,11 @@ return array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
         ),
         'factories' => array(
-            'Application\Controller\Coin'    => 'Application\Controller\CoinControllerFactory',
-            'Application\Controller\Monarch' => 'Application\Controller\MonarchControllerFactory'
+            'Application\Controller\Coin'     => 'Application\Controller\CoinControllerFactory',
+            'Application\Controller\Grade'    => 'Application\Controller\GradeControllerFactory',
+            'Application\Controller\Monarch'  => 'Application\Controller\MonarchControllerFactory',
+            'Application\Controller\Specimen' => 'Application\Controller\SpecimenControllerFactory',
+            'Application\Controller\Type'     => 'Application\Controller\TypeControllerFactory',
         ),
     ),
     

@@ -5,7 +5,7 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class MonarchController extends AbstractActionController
+class TypeController extends AbstractActionController
 {
     protected $service;
     
@@ -18,14 +18,14 @@ class MonarchController extends AbstractActionController
     public function indexAction()
     {
         return array(
-            'monarchs' => $this->service->findAll()
+            'types' => $this->service->findAll()
         );
     }
    
     public function addAction()
     {
         // Create a new form.
-        $form = $this->getServiceLocator()->get('Application\Form\Monarch');
+        $form = $this->getServiceLocator()->get('Application\Form\Type');
          
         // Check if the request is a POST.
         $request = $this->getRequest();
@@ -34,20 +34,19 @@ class MonarchController extends AbstractActionController
             // POST, so check if valid.
             $data = (array) $request->getPost();
           
-            // Create a new monarch object.
-            $monarch = $this->getServiceLocator()->get('Application\Monarch');
+            // Create a new type object.
+            $monarch = $this->getServiceLocator()->get('Application\Type');
             
-            $form->bind($monarch);
+            $form->bind($type);
             $form->setData($data);
             if ($form->isValid())
             {
-          	// Persist computer.
-            	$this->service->persist($monarch);
+          	// Persist type.
+            	$this->service->persist($type);
                 
-            	// Redirect to list of monarchs
+            	// Redirect to list of types
 		return $this->redirect()->toRoute('application/default', array(
-		    'controller' => 'monarch',
-                    'action'     => 'index'
+		    'controller' => 'type',
 		));
             }
         } 
@@ -64,16 +63,16 @@ class MonarchController extends AbstractActionController
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
              return $this->redirect()->toRoute('application/default', array(
-                 'controller' => 'monarch',
+                 'controller' => 'type',
                  'action' => 'add'
              ));
         }
         
-        // Grab the monarch with the specified id.
-        $monarch = $this->service->findById($id);
+        // Grab the type with the specified id.
+        $type = $this->service->findById($id);
         
-        $form = $this->getServiceLocator()->get('Application\Form\Monarch');
-        $form->bind($monarch);
+        $form = $this->getServiceLocator()->get('Application\Form\Type');
+        $form->bind($type);
         
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -81,18 +80,18 @@ class MonarchController extends AbstractActionController
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 
-                // Persist monarch.
-            	$this->service->persist($monarch);
+                // Persist type.
+            	$this->service->persist($type);
                 
-                // Redirect to list of monarchs
+                // Redirect to list of types
                 return $this->redirect()->toRoute('application/default', array(
-                    'controller' => 'monarch'
+                    'controller' => 'type'
                 ));
             }     
         }
         
         return new ViewModel(array(
-             'monarch' => $monarch,
+             'type' => $type,
              'form' => $form,
         ));
         
