@@ -1,4 +1,13 @@
-<h1>Monarchs</h1>
+<header class="row">
+    <h1 class="col-md-9">Monarchs</h1>
+    <div class="col-md-3">
+        <a class="pull-right btn btn-sm btn-success" href="<?php echo $this->url('application/default', array(
+            'controller' => 'monarch',
+            'action' => 'add'
+        ));?>">Add Monarch</a>
+    </div>
+</header>
+    
 <table class="table">
     <thead>
         <tr>
@@ -6,6 +15,7 @@
             <th>House</th>
             <th>Reign Start</th>
             <th>Reign End</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -13,8 +23,20 @@
         <tr>
             <td><?php echo $monarch->getName(); ?></td>
             <td><?php echo $monarch->getHouse(); ?></td>
-            <td><?php echo date_format($monarch->getReignStart(), 'd/m/Y'); ?></td>
+            <td><?php echo $monarch->getReignStart() ? date_format($monarch->getReignStart(), 'd/m/Y') : ''; ?></td>
             <td><?php echo $monarch->getReignEnd(); ?></td>
+            <td style="width: 1%;" nowrap>
+                <a class="btn btn-sm btn-warning" href="<?php echo $this->url('application/default', array(
+                    'controller' => 'monarch',
+                    'action' => 'edit',
+                    'id' => $monarch->getId()
+                )); ?>">Edit</a>
+                <a class="btn btn-sm btn-danger" href="<?php echo $this->url('application/default', array(
+                    'controller' => 'monarch',
+                    'action' => 'delete',
+                    'id' => $monarch->getId()
+                )); ?>">Delete</a>
+            </td>
         </tr>
     <?php endforeach; ?>
     </tbody>

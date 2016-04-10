@@ -46,6 +46,11 @@ class Monarch
      */
     protected $death;
     
+    function getId()
+    {
+        return $this->id;
+    }
+    
     function getName()
     {
         return $this->name;
@@ -74,8 +79,15 @@ class Monarch
     function getDeath()
     {
         return $this->death;
+    
     }
 
+    function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+    
     function setName($name)
     {
         $this->name = $name;

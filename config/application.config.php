@@ -10,7 +10,8 @@ return array(
     'modules' => array(
         'Application',
         'DoctrineModule',
-        'DoctrineORMModule'
+        'DoctrineORMModule',
+        'TwbBundle'
     ),
 
     // These are various options for the listeners attached to the ModuleManager
