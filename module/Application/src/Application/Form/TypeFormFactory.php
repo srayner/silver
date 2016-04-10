@@ -10,8 +10,8 @@ class TypeFormFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $form = new TypeForm;
         $entityManager = $serviceLocator->get('Doctrine\ORM\EntityManager');
+        $form = new TypeForm($entityManager);
         $hydrator = new DoctrineHydrator($entityManager);
         $form->setHydrator($hydrator);
         return $form;

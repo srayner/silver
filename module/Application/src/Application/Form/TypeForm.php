@@ -4,11 +4,12 @@ namespace Application\Form;
 
 class TypeForm extends HorizontalForm
 {
-    public function __construct()
+    public function __construct($em)
     {
         parent::__construct();
         
-        $this->addText('denomination', 'Demonination')
+        $this->addDoctrineSelect('monarch', 'Monarch', $em, 'Application\Entity\Monarch', 'name')
+             ->addText('denomination', 'Demonination')
              ->addText('metal', 'Metal')
              ->addText('diameter', 'Diameter')
              ->addText('weight', 'Weight')

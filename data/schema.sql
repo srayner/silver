@@ -16,7 +16,7 @@ CREATE TABLE monarch (
 CREATE TABLE type (
     id           Integer NOT NULL AUTO_INCREMENT,
     monarch_id   Integer,
-    demonination Varchar(32),
+    denomination Varchar(32),
     metal        VarChar(32),
     diameter     Decimal(6,2),
     weight       Decimal(6,2),

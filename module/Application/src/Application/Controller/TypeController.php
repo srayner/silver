@@ -35,7 +35,7 @@ class TypeController extends AbstractActionController
             $data = (array) $request->getPost();
           
             // Create a new type object.
-            $monarch = $this->getServiceLocator()->get('Application\Type');
+            $type = $this->getServiceLocator()->get('Application\Type');
             
             $form->bind($type);
             $form->setData($data);

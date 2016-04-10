@@ -1,0 +1,45 @@
+<header class="row">
+    <h1 class="col-md-9">Coin Types</h1>
+    <div class="col-md-3">
+        <a class="pull-right btn btn-sm btn-success" href="<?php echo $this->url('application/default', array(
+            'controller' => 'type',
+            'action' => 'add'
+        ));?>">Add Type</a>
+    </div>
+</header>
+    
+<table class="table">
+    <thead>
+        <tr>
+            <th>Monarch</th>
+            <th>Denomination</th>
+            <th>Metal</th>
+            <th>Diameter</th>
+            <th>Weight</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach($this->types as $type):?>
+        <tr>
+            <td><?php echo $type->getMonarch()->getName(); ?></td>
+            <td><?php echo $type->getDenomination(); ?></td>
+            <td><?php echo $type->getMetal(); ?></td>
+            <td><?php echo $type->getDiameter(); ?>mm</td>
+            <td><?php echo $type->getWeight(); ?>g</td>
+            <td style="width: 1%;" nowrap>
+                <a class="btn btn-sm btn-warning" href="<?php echo $this->url('application/default', array(
+                    'controller' => 'type',
+                    'action' => 'edit',
+                    'id' => $type->getId()
+                )); ?>">Edit</a>
+                <a class="btn btn-sm btn-danger" href="<?php echo $this->url('application/default', array(
+                    'controller' => 'type',
+                    'action' => 'delete',
+                    'id' => $type->getId()
+                )); ?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
