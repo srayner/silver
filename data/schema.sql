@@ -40,7 +40,8 @@ CREATE TABLE coin (
 
 -- Grade table
 CREATE TABLE grade (
-    id           Integer NOT NULL AUTO_INCREMENT, 
+    id           Integer NOT NULL AUTO_INCREMENT,
+    code         VarChar(16), 
     description  Varchar(32),
   PRIMARY KEY (
     id
@@ -58,7 +59,7 @@ CREATE TABLE specimen (
   box            Varchar(32),
   tray           Varchar(32),
   row_no         Integer,
-  column_no      Integer),
+  column_no      Integer,
   PRIMARY KEY (id),
   FOREIGN KEY (coin_id)  REFERENCES coin(id)  ON DELETE CASCADE,
   FOREIGN KEY (grade_id) REFERENCES grade(id) ON DELETE CASCADE
