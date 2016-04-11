@@ -1,0 +1,39 @@
+<header class="row">
+    <h1 class="col-md-9">Coin Grades</h1>
+    <div class="col-md-3">
+        <a class="pull-right btn btn-sm btn-success" href="<?php echo $this->url('application/default', array(
+            'controller' => 'grade',
+            'action' => 'add'
+        ));?>">Add Grade</a>
+    </div>
+</header>
+    
+<table class="table">
+    <thead>
+        <tr>
+            <th>Grade</th>
+            <th>Description<th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach($this->grades as $grade):?>
+        <tr>
+            <td></td>
+            <td><?php echo $grade->getDescription(); ?></td>
+            <td style="width: 1%;" nowrap>
+                <a class="btn btn-sm btn-warning" href="<?php echo $this->url('application/default', array(
+                    'controller' => 'grade',
+                    'action' => 'edit',
+                    'id' => $type->getId()
+                )); ?>">Edit</a>
+                <a class="btn btn-sm btn-danger" href="<?php echo $this->url('application/default', array(
+                    'controller' => 'grade',
+                    'action' => 'delete',
+                    'id' => $type->getId()
+                )); ?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
