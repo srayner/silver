@@ -19,6 +19,11 @@ class Grade
     /**
      * @ORM\Column(type="string")
      */
+    protected $code;
+   
+    /**
+     * @ORM\Column(type="string")
+     */
     protected $description;
     
     function getId()
@@ -26,6 +31,11 @@ class Grade
         return $this->id;
     }
 
+    function getCode()
+    {
+        return $this->code;
+    }
+    
     function getDescription()
     {
         return $this->description;
@@ -37,6 +47,12 @@ class Grade
         return $this;
     }
 
+    function setCode($code)
+    {
+        $this->code = $code;
+        return $this;
+    }
+    
     function setDescription($description)
     {
         $this->description = $description;

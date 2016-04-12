@@ -8,7 +8,8 @@ class GradeForm extends HorizontalForm
     {
         parent::__construct();
         
-        $this->addText('description', 'Description')
+        $this->addText('code', 'Code')
+             ->addText('description', 'Description')
              ->addButton('submit', 'Add', 'btn-primary');
     }
 }
