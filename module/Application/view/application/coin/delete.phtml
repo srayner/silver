@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-12 title">
+        <h1>Delete Coin Grade</h1>
+        <hr>
+        <p>Are you sure you want to delete this coin?</p>
+        
+        <form action="<?php echo $this->url('application/default', array(
+            'controller' => 'coin',
+            'action' => 'delete',
+            'id' => $this->coin->getId()
+        )); ?>" method="post">
+            <div>
+                <input class="btn btn-primary" type="submit" name="del" value="Yes" />
+                <input class="btn btn-default" type="submit" name="del" value="No" />
+            </div>
+        </form>
+    </div>
+</div>

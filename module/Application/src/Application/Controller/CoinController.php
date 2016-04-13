@@ -101,6 +101,30 @@ class CoinController extends AbstractActionController
     public function deleteAction()
     {
         
+        // Ensure we have an id, else redirect to index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('application/default', array('controller' => 'grade'));
+        }
+        
+        $coin = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($coin);
+            }
+
+            // Redirect to list of coins
+            return $this->redirect()->toRoute('application/default', array('controller' => 'coin'));
+         }
+         
+        return new ViewModel(array(
+            'coin' => $coin
+        ));
     }
     
     private function pretty($str)
