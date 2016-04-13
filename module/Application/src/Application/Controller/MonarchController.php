@@ -100,6 +100,30 @@ class MonarchController extends AbstractActionController
     
     public function deleteAction()
     {
+        // Ensure we have an id, else redirect to index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('application/default', array('controller' => 'monarch'));
+        }
+        
+        $monarch = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($monarch);
+            }
+
+            // Redirect to list of coins
+            return $this->redirect()->toRoute('application/default', array('controller' => 'monarch'));
+         }
+         
+        return new ViewModel(array(
+            'monarch' => $monarch
+        ));
         
     }
 

@@ -27,4 +27,10 @@ class TypeService
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
     }
+    
+    public function remove($entity)
+    {
+        $this->entityManager->remove($entity);
+        $this->entityManager->flush();
+    }
 }

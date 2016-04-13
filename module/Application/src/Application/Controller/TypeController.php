@@ -99,7 +99,30 @@ class TypeController extends AbstractActionController
     
     public function deleteAction()
     {
+        // Ensure we have an id, else redirect to index action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('application/default', array('controller' => 'type'));
+        }
         
+        $type = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($type);
+            }
+
+            // Redirect to list of types
+            return $this->redirect()->toRoute('application/default', array('controller' => 'type'));
+         }
+         
+        return new ViewModel(array(
+            'type' => $type
+        ));
     }
 
 }
