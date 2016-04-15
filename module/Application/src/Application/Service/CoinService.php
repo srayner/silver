@@ -22,6 +22,14 @@ class CoinService
         return $this->entityManager->getRepository($this::REPO)->find($id);
     }
     
+    public function findByDenomination($denomination)
+    {
+        $dql = 'SELECT c, t FROM Application\Entity\Coin c JOIN c.type t WHERE t.denomination = :denomination';
+        $query = $this->entityManager->createQuery($dql);
+        $query->setParameter('denomination', $denomination);
+        return $query->getResult();
+    }
+    
     public function persist($entity)
     {
         $this->entityManager->persist($entity);

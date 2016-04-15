@@ -22,6 +22,14 @@ class CoinController extends AbstractActionController
         );
     }
    
+    public function denominationAction()
+    {
+        $denomination = $this->params()->fromRoute('id', '');
+        return array(
+            'coins' => $this->service->findByDenomination($denomination)
+        );
+    }
+    
     public function addAction()
     {
         // Create a new form.

@@ -1,0 +1,11 @@
+<table class="table">
+<?php foreach($this->coins as $coin): ?>
+    <tr>
+        <td><?php echo $coin->getYear(); ?></td>
+        <td><?php echo $coin->getMintage(); ?></td>
+        <td><?php echo $coin->getObverseDesign(); ?></td>
+        <td><?php echo $coin->getReverseDesign(); ?></td>
+        <td><?php echo $coin->getType()->getDiameter(); ?></td>
+    </tr>
+<?php endforeach; ?>
+</table>

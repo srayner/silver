@@ -22,6 +22,14 @@ class MonarchController extends AbstractActionController
         );
     }
    
+    public function denomination()
+    {
+        $denomination = $this->params()->fromRoute('id', '');
+        return array(
+            'monarchs' => $this->service->findByDenomination($denomination)
+        );
+    }
+    
     public function addAction()
     {
         // Create a new form.

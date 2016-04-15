@@ -1,0 +1,21 @@
+<?php foreach ($this->monarchs as $monarch): ?>
+<h2><?php echo $monarch->getName(); ?></h2>
+
+<?php foreach ($monarch->getTypes() as $type): ?>
+<h3><?php echo $type->getMetal() . ' ' . $type->getDiameter(); ?></h3>
+
+<table class="table">
+<?php foreach($type->getCoins() as $coin): ?>
+    <tr>
+        <td><?php echo $coin->getYear(); ?></td>
+        <td><?php echo $coin->getMintage(); ?></td>
+        <td><?php echo $coin->getObverseDesign(); ?></td>
+        <td><?php echo $coin->getReverseDesign(); ?></td>
+        <td><?php echo $coin->getType()->getDiameter(); ?></td>
+    </tr>
+<?php endforeach; ?>
+</table>
+
+<?php endforeach; ?>
+
+<?php endforeach; ?>
