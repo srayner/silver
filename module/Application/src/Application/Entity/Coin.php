@@ -32,6 +32,11 @@ class Coin
     protected $mintage;
     
     /**
+     * @ORM\Column(type="string", name="obverse_image")
+     */
+    protected $obverseImage;
+    
+    /**
      * @ORM\Column(type="string", name="obverse_design")
      */
     protected $obverseDesign;
@@ -40,6 +45,11 @@ class Coin
      * @ORM\Column(type="string", name="obverse_designer")
      */
     protected $obverseDesigner;
+    
+    /**
+     * @ORM\Column(type="string", name="reverse_image")
+     */
+    protected $reverseImage;
     
     /**
      * @ORM\Column(type="string", name="reverse_design")
@@ -71,6 +81,11 @@ class Coin
         return $this->mintage;
     }
 
+    function getObverseImage()
+    {
+        return $this->obverseImage;
+    }
+    
     function getObverseDesign()
     {
         return $this->obverseDesign;
@@ -81,6 +96,11 @@ class Coin
         return $this->obverseDesigner;
     }
 
+    function getReverseImage()
+    {
+        return $this->reverseImage;
+    }
+    
     function getReverseDesign()
     {
         return $this->reverseDesign;
@@ -112,6 +132,11 @@ class Coin
         $this->mintage = $mintage;
     }
 
+    function setObverseImage($obverseImage)
+    {
+        $this->obverseImage = $obverseImage;
+    }
+    
     function setObverseDesign($obverseDesign)
     {
         $this->obverseDesign = $obverseDesign;
@@ -122,6 +147,11 @@ class Coin
         $this->obverseDesigner = $obverseDesigner;
     }
 
+    function setReverseImage($reverseImage)
+    {
+        $this->reverseImage = $reverseImage;
+    }
+    
     function setReverseDesign($reverseDesign)
     {
         $this->reverseDesign = $reverseDesign;

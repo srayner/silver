@@ -9,6 +9,7 @@
     <table class="table">
     <?php foreach($type->getCoins() as $coin): ?>
         <tr>
+            <td><img height="96" src="/images/<?php echo $coin->getReverseImage(); ?>"</td>
             <td><?php echo $coin->getYear(); ?></td>
             <td><?php echo $coin->getMintage(); ?></td>
             <td><?php echo $coin->getObverseDesign(); ?></td>
