@@ -24,7 +24,9 @@ class CoinService
     
     public function findByDenomination($denomination)
     {
-        $dql = 'SELECT c, t FROM Application\Entity\Coin c JOIN c.type t WHERE t.denomination = :denomination';
+        $dql = 'SELECT c, t '
+             .  'FROM Application\Entity\Coin c '
+             .  'JOIN c.type t WHERE t.denomination = :denomination';
         $query = $this->entityManager->createQuery($dql);
         $query->setParameter('denomination', $denomination);
         return $query->getResult();

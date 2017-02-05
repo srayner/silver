@@ -124,6 +124,16 @@ class TypeController extends AbstractActionController
             'type' => $type
         ));
     }
+    
+    public function denominationAction()
+    {
+        $denomination = urldecode($this->params()->fromRoute('id', ''));
+        $types = $this->service->findByDenomination($denomination);
+        return array(
+            'denomination' => $denomination,
+            'types' => $types
+        );
+    }
 
 }
 

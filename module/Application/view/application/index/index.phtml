@@ -12,61 +12,15 @@
             </div>
             <div class="panel-body">
                 <ul>
+                <?php $denominations = array('Half Farthing', 'Farthing', 'Half Penny', 'Penny',
+                    'Threepence', 'Groat', 'Sixpence', 'Shilling', 'Florin', 'Half Crown', 'Crown'); ?>
+                <?php foreach ($denominations as $denomination): ?>
                     <li><a href="<?php echo $this->url('application/default', array(
-                        'controller' => 'coin',
-                        'action' => 'index',
-                        'type' => 'half-farthing'
-                        ));?>">Half Farthing</a></li>
-                    <li><a href="<?php echo $this->url('application/default', array(
-                        'controller' => 'coin',
-                        'action' => 'index',
-                        'type' => 'farthing'
-                        ));?>">Farthing</a></li>
-                    <li><a href="<?php echo $this->url('application/default', array(
-                        'controller' => 'coin',
-                        'action' => 'index',
-                        'type' => 'half-penny'
-                        ));?>">Half Penny</li>
-                    <li><a href="<?php echo $this->url('application/default', array(
-                        'controller' => 'coin',
-                        'action' => 'index',
-                        'type' => 'penny'
-                        ));?>">Penny</a></li>
-                    <li><a href="<?php echo $this->url('application/default', array(
-                        'controller' => 'coin',
-                        'action' => 'index',
-                        'type' => 'threepence'
-                        ));?>">Threepence</a></li>
-                    <li><a href="<?php echo $this->url('application/default', array(
-                        'controller' => 'coin',
-                        'action' => 'index',
-                        'type' => 'groat'
-                        ));?>">Groat</a></li>
-                    <li><a href="<?php echo $this->url('application/default', array(
-                        'controller' => 'coin',
-                        'action' => 'index',
-                        'type' => 'sixpence'
-                        ));?>">Sixpence</a></li>
-                    <li><a href="<?php echo $this->url('application/default', array(
-                        'controller' => 'coin',
-                        'action' => 'index',
-                        'type' => 'shilling'
-                        ));?>">Shilling</a></li>
-                    <li><a href="<?php echo $this->url('application/default', array(
-                        'controller' => 'coin',
-                        'action' => 'index',
-                        'type' => 'florin'
-                        ));?>">Florin</a></li>
-                    <li><a href="<?php echo $this->url('application/default', array(
-                        'controller' => 'coin',
-                        'action' => 'index',
-                        'type' => 'half-crown'
-                        ));?>">Half Crown</a></li>
-                    <li><a href="<?php echo $this->url('application/default', array(
-                        'controller' => 'coin',
-                        'action' => 'index',
-                        'type' => 'crown'
-                        ));?>">Crown</a></li>
+                            'controller' => 'type',
+                            'action'     => 'denomination',
+                            'id' => urlEncode($denomination)
+                    ));?>"><?php echo $denomination; ?></a></li>
+                <?php endforeach; ?>
                 </ul>            
             </div>
         </div>
@@ -79,17 +33,16 @@
             </div>
             <div class="panel-body">
                 <ul>
-                    <li><a href="#">Half pence</a></li>
-                    <li><a href="#">One Pence</a></li>
-                    <li><a href="#">Two Pence</a></li>
-                    <li><a href="#">Five Pence</a></li>
-                    <li><a href="#">Ten Pence</a></li>
-                    <li><a href="#">Twenty Pence</a></li>
-                    <li><a href="#">Twenty Five Pence</a></li>
-                    <li><a href="#">Fifty Pence</a></li>
-                    <li><a href="#">One Pound<a></li>
-                    <li><a href="#">Two Pounds</a></li>
-                    <li><a href="#">Five Pounds</a></li>
+                <?php $denominations = array('Half pence', 'One pence', 'Two pence', 'Five pence',
+                    'Ten pence', 'Twenty pence', 'Fifty pence', 'One pound', 'Two pounds', 'Five pounds'); ?>
+                <?php foreach ($denominations as $denomination): ?>
+                   
+                    <li><a href="<?php echo $this->url('application/default', array(
+                            'controller' => 'type',
+                            'action'     => 'denomination',
+                            'id' => urlEncode($denomination)
+                    ));?>"><?php echo $denomination; ?></a></li>
+                <?php endforeach; ?>
                 </ul>            
             </div>
         </div>

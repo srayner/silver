@@ -22,6 +22,13 @@ class TypeService
         return $this->entityManager->getRepository($this::REPO)->find($id);
     }
     
+    public function findByDenomination($denomination)
+    {
+        return $this->entityManager->getRepository($this::REPO)->findBy(array(
+            'denomination' => $denomination
+        ));
+    }
+    
     public function persist($entity)
     {
         $this->entityManager->persist($entity);
@@ -33,4 +40,5 @@ class TypeService
         $this->entityManager->remove($entity);
         $this->entityManager->flush();
     }
+    
 }

@@ -2,6 +2,7 @@
 
 namespace Application\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /** @ORM\Entity
   * @ORM\Table(name="type")
@@ -40,6 +41,21 @@ class Type
      * @ORM\Column(type="decimal")
      */
     protected $weight;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="coin", mappedBy="type", cascade={"persist"})
+     */
+    protected $coins;
+    
+    public function __construct()
+    {
+        $this->coins = new ArrayCollection();
+    }
+    
+    public function getCoins()
+    {
+        return $this->coins->toArray();
+    }
     
     function getId()
     {
