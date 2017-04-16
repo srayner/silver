@@ -142,16 +142,32 @@ class HorizontalForm extends Form
         return $this;
     }
     
-    protected function addDoctrineSelect($name, $label, $em, $entity, $property)
+    /**
+     * 
+     * @param type $name the field name
+     * @param type $label the label caption
+     * @param type $em entity manager
+     * @param type $entity entity name
+     * @param type $caption either the property to use as a label or a callable function
+     * @return $this
+     */
+    protected function addDoctrineSelect($name, $label, $em, $entity, $caption = null)
     {
+        $options = [
+            'object_manager' => $em,
+            'target_class'   => $entity
+        ];
+        
+        if (is_callable($caption)) {
+            $options['label_generator'] = $caption;
+        } elseif (is_string($caption)) {
+            $options['property'] = $caption;
+        }
+        
         $select = $this->getFormFactory()->create(array(
-            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
-            'name' => $name,
-                'options' => array(
-                'object_manager' => $em,
-                'target_class'   => $entity,
-                'property'       => $property,
-            ),
+            'type'    => 'DoctrineModule\Form\Element\ObjectSelect',
+            'name'    => $name,
+            'options' => $options
         ));
         $select->setLabel($label);
         $select->setLabelAttributes(array('class' => "col-sm-$this->labelWidth"));

@@ -8,7 +8,7 @@ class CoinForm extends HorizontalForm
     {
         parent::__construct();
         
-        $this->addDoctrineSelect('type', 'Coin Type', $em, 'Application\Entity\Type', 'denomination')
+        $this->addDoctrineSelect('type', 'Coin Type', $em, 'Application\Entity\Type', [$this, 'typeLabelGen'])
              ->addText('year', 'Year')
              ->addText('mintage', 'Mintage')
              ->addText('obverseImage', 'Obverse Image')
@@ -19,4 +19,10 @@ class CoinForm extends HorizontalForm
              ->addText('reverseDesigner', 'Reverse Designer')
              ->addButton('submit', 'Add', 'btn-primary');
     }
+    
+    public function typeLabelGen($targetEntity)
+    {
+        return $targetEntity->getDenomination() . ' - ' . $targetEntity->getMonarch()->getName();
+    }
+    
 }
