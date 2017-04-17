@@ -1,16 +1,20 @@
-<div class="jumbotron">
-    <h1>UK Coin Collection</h1>
-    <p>Coins of the United Kingdom. Use the links below to view the different coins types.</p>
-</div>
-
-<div class="row">
-
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Pre-Decimal</h3>
+<div id="home" class="row" style="background-color: #242424; color: #ddd">
+    
+    <div class="col-md-3">
+        <img src="/img/coins.jpg">
+    </div>
+    
+    <div class="col-md-9">
+            <h1>United Kingdom Coin Collection</h1>
+            <p>Coins of the United Kingdom. Use the links below to view the different coins types.</p>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="list">
+            <div class="list-header">
+                <h2>Pre-Decimal</h2>
             </div>
-            <div class="panel-body">
+            <div>
                 <ul>
                 <?php $denominations = array('Half Farthing', 'Farthing', 'Half Penny', 'Penny',
                     'Threepence', 'Groat', 'Sixpence', 'Shilling', 'Florin', 'Half Crown', 'Crown'); ?>
@@ -25,16 +29,16 @@
             </div>
         </div>
     </div>
-
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Decimal</h3>
+    
+    <div class="col-md-3">
+        <div class="list">
+            <div class="list-header">
+                <h2>Decimal</h2>
             </div>
-            <div class="panel-body">
+            <div>
                 <ul>
                 <?php $denominations = array('Half pence', 'One pence', 'Two pence', 'Five pence',
-                    'Ten pence', 'Twenty pence', 'Fifty pence', 'One pound', 'Two pounds', 'Five pounds'); ?>
+                    'Ten pence', 'Twenty pence', 'Twenty-five pence', 'Fifty pence', 'One pound', 'Two pounds', 'Five pounds'); ?>
                 <?php foreach ($denominations as $denomination): ?>
                    
                     <li><a href="<?php echo $this->url('application/default', array(
@@ -47,6 +51,26 @@
             </div>
         </div>
     </div>
-
+    
+    <div class="col-md-3">
+        <div class="list">
+            <div class="list-header">
+                <h2>Gold</h2>
+            </div>
+            <div>
+                <ul>
+                <?php $denominations = ['Half Sovereign', 'Half guinea', 'Sovereign', 'Guinea']; ?>
+                <?php foreach ($denominations as $denomination): ?>
+                   
+                    <li><a href="<?php echo $this->url('application/default', array(
+                            'controller' => 'type',
+                            'action'     => 'denomination',
+                            'id' => urlEncode($denomination)
+                    ));?>"><?php echo $denomination; ?></a></li>
+                <?php endforeach; ?>
+                </ul>            
+            </div>
+        </div>
+    </div>
     
 </div>
