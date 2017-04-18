@@ -44,6 +44,7 @@ class Type
     
     /**
      * @ORM\OneToMany(targetEntity="coin", mappedBy="type", cascade={"persist"})
+     * @ORM\OrderBy({"year" = "ASC"})
      */
     protected $coins;
     
