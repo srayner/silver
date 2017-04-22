@@ -18,6 +18,7 @@ class MonarchFormFactory implements FactoryInterface
         $hydrator->addStrategy('birth', $dateTimeStrategy);
         $hydrator->addStrategy('reignStart', $dateTimeStrategy);
         $hydrator->addStrategy('reignEnd', $dateTimeStrategy);
+        $hydrator->addStrategy('death', $dateTimeStrategy);
         $form->setHydrator($hydrator);
         $validator = new MonarchValidator();
         $form->setInputFilter($validator);

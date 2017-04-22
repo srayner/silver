@@ -22,7 +22,9 @@ class CoinForm extends HorizontalForm
     
     public function typeLabelGen($targetEntity)
     {
-        return $targetEntity->getDenomination() . ' - ' . $targetEntity->getMonarch()->getName();
+        return $targetEntity->getMonarch()->getName() . ' ' .
+               $targetEntity->getDenomination() . ' - ' .
+               $targetEntity->getDiameter();
     }
     
 }

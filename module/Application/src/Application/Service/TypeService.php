@@ -24,9 +24,16 @@ class TypeService
     
     public function findByDenomination($denomination)
     {
-        return $this->entityManager->getRepository($this::REPO)->findBy(array(
-            'denomination' => $denomination
-        ));
+        $dql = 'SELECT t '
+             .  'FROM Application\Entity\Type t '
+             .  'JOIN t.monarch m WHERE t.denomination = :denomination';
+        $query = $this->entityManager->createQuery($dql);
+        $query->setParameter('denomination', $denomination);
+        return $query->getResult();
+        
+        //return $this->entityManager->getRepository($this::REPO)->findBy(array(
+        //    'denomination' => $denomination
+        //));
     }
     
     public function persist($entity)

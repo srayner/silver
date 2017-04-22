@@ -3,13 +3,15 @@
 <?php foreach ($this->types as $type): ?>
 
     <h2><?php echo $type->getMonarch()->getName(); ?></h2>
-    <p>Diameter: <?php echo $type->getDiameter(); ?></p>
-    <p>Metal: <?php echo $type->getMetal(); ?></p>
+    Diameter: <?php echo $type->getDiameter(); ?><br>
+    Weight: <?php echo $type->getWeight(); ?><br>
+    Metal: <?php echo $type->getMetal(); ?><br>
     
     <table class="table">
     <?php foreach($type->getCoins() as $coin): ?>
         <tr>
-            <td><img height="96" src="/images/<?php echo $coin->getReverseImage(); ?>"</td>
+            <?php $img = $coin->getReverseImage() ?: $coin->getObverseImage();?>
+            <td><img height="96" src="/images/<?php echo $img; ?>"</td>
             <td><?php echo $coin->getYear(); ?></td>
             <td><?php echo $coin->getMintage(); ?></td>
             <td><?php echo $coin->getObverseDesign(); ?></td>

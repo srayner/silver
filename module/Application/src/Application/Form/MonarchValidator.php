@@ -11,6 +11,7 @@ class MonarchValidator extends InputFilter
         $this->addDateValidator('birth');
         $this->addDateValidator('reignStart');
         $this->addDateValidator('reignEnd', false);
+        $this->addDateValidator('death', false);
     }
     
     protected function addDateValidator($field, $required = true)
