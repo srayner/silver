@@ -2,6 +2,7 @@
 
 namespace Application\Form;
 
+use Zend\Stdlib\Hydrator\ClassMethods;
 use Application\Hydrator\Strategy\DateTimeStrategy;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Zend\ServiceManager\FactoryInterface;
@@ -12,8 +13,7 @@ class MonarchFormFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $form = new MonarchForm;
-        $entityManager = $serviceLocator->get('Doctrine\ORM\EntityManager');
-        $hydrator = new DoctrineHydrator($entityManager);
+        $hydrator = new classMethods(false);
         $dateTimeStrategy = new DateTimeStrategy('d/m/Y');
         $hydrator->addStrategy('birth', $dateTimeStrategy);
         $hydrator->addStrategy('reignStart', $dateTimeStrategy);

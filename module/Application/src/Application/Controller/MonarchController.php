@@ -89,7 +89,7 @@ class MonarchController extends AbstractActionController
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 
-                // Persist monarch.
+                // Persist monarch    
             	$this->service->persist($monarch);
                 
                 // Redirect to list of monarchs

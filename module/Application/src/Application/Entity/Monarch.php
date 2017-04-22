@@ -78,8 +78,7 @@ class Monarch
 
     function getDeath()
     {
-        return $this->death;
-    
+        return $this->death;    
     }
 
     function setId($id)
