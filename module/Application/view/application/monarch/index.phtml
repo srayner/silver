@@ -24,7 +24,7 @@
             <td><?php echo $monarch->getName(); ?></td>
             <td><?php echo $monarch->getHouse(); ?></td>
             <td><?php echo $monarch->getReignStart() ? date_format($monarch->getReignStart(), 'd/m/Y') : ''; ?></td>
-            <td><?php echo $monarch->getReignEnd(); ?></td>
+            <td><?php echo $monarch->getReignEnd() ? date_format($monarch->getReignEnd(), 'd/m/Y') : ''; ?></td>
             <td style="width: 1%;" nowrap>
                 <a class="btn btn-sm btn-warning" href="<?php echo $this->url('application/default', array(
                     'controller' => 'monarch',
